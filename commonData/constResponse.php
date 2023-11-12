@@ -1,5 +1,5 @@
 <?php
-namespace commonData;
+namespace RAOVAT\CommonData;
 
 class ConstResponse{
     const SUCCESS = 200;

@@ -1,5 +1,5 @@
 <?php
-namespace Models\Users;
+namespace RAOVAT\Models\Users;
 class CreateUserDto{
     function __construct($un, $pw, $fn, $ln, $pn){
         $this->username = $un;

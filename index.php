@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-  include("datas/mySqlConnection.php");
-?>
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
   <title>RaoVat Bootstrap Template - Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
+  <?php 
+  require_once __DIR__ . '/Datas/DBUsers/UserData.php' ;
+  use RAOVAT\Datas\DBUsers\UserData;
+  $a = new UserData();
+  $res =$a->GetAllUser();
+  var_dump($res);
+  ?>
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -128,16 +130,64 @@
                           </div>
                           <button type="submit" class="btn btn-primary">Login</button>
                       </form>
+                      <a href="#registerContainer" onclick= "toggleRegisterForm()" class="mt-3 faq-list-6">Chưa có tài khoản</a>
                   </div>
               </div>
           </div>
       </div>
       </div>
     </section>
+    <!-- resgites Section -->
+    <section id= "registerContainer" class = "section-bg d-none">
+    <div class="container pb-2">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Registration Form
+                </div>
+                <div class="card-body">
+                    <form action="services/Auth/Register.php" method="post">
+                        <div class="form-group">
+                            <label class = "mb-1" for="un" >Username:</label>
+                            <input type="text" class="form-control mb-2" id="un" name="un" required>
+                        </div>
+                        <div class="form-group">
+                            <label class = "mb-1" for="pw">Password:</label>
+                            <input type="password" class="form-control mb-2" id="pw" name="pw" required>
+                        </div>
+                        <div class="form-group">
+                            <label class = "mb-1" for="fn">First Name:</label>
+                            <input type="text" class="form-control mb-2" id="fn" name="fn" required>
+                        </div>
+                        <div class="form-group">
+                            <label class = "mb-1" for="ln">Last Name:</label>
+                            <input type="text" class="form-control mb-2" id="ls" name="ln" required>
+                        </div>
+                        <div class="form-group">
+                            <label class = "mb-1" for="pn">Phone Number:</label>
+                            <input type="tel" class="form-control mb-2" id="pn" name="pn" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" >Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </section>
+    <!-- end resgites Section -->
 <script>
     function toggleLoginForm() {
         var loginFormContainer = document.getElementById("loginFormContainer");
         loginFormContainer.classList.toggle("d-none");
+    }
+    function toggleRegisterForm() {
+      var loginFormContainer = document.getElementById("loginFormContainer");
+        loginFormContainer.classList.toggle("d-none");
+
+        var RegisFormContainer = document.getElementById("registerContainer");
+        RegisFormContainer.classList.toggle("d-none");
     }
 </script>
     <!-- End Login Section -->
